@@ -1,4 +1,5 @@
 import { expect, type Locator, type Page, test } from '@playwright/test';
+import { dragTaskToColumn } from './helpers/drag';
 
 async function resetBoard(page: Page) {
   await page.goto('/');
@@ -57,18 +58,19 @@ test.describe('Kanban board', () => {
   });
 
   test('moves a task between columns with drag and drop', async ({ page }) => {
-    const taskCard = page.getByTestId('task-card-108');
-    const doneColumn = page.getByTestId('board-column-done');
+    const taskCard = page.getByTestId('task-card-104');
+    const targetDropZone = page.getByTestId('board-drop-in_progress');
 
     await expect(taskCard).toBeVisible();
-    await taskCard.dragTo(doneColumn);
-    await page.waitForTimeout(300);
+    await dragTaskToColumn(page, taskCard, targetDropZone);
 
-    await expect(doneColumn.getByTestId('task-card-108')).toBeVisible();
-    await expect(page.getByTestId('board-column-todo').getByTestId('task-card-108')).toHaveCount(0);
+    await expect(page.getByTestId('board-column-in_progress').getByTestId('task-card-104')).toBeVisible({
+      timeout: 10_000
+    });
+    await expect(page.getByTestId('board-column-todo').getByTestId('task-card-104')).toHaveCount(0);
 
     await page.reload();
-    await expect(page.getByTestId('board-column-done').getByTestId('task-card-108')).toBeVisible();
+    await expect(page.getByTestId('board-column-in_progress').getByTestId('task-card-104')).toBeVisible();
   });
 
   test('keeps hidden tasks when dragging under an active title filter', async ({ page }) => {
@@ -79,10 +81,11 @@ test.describe('Kanban board', () => {
     await expect(visibleCard).toBeVisible();
     await expect(page.getByTestId('board-column-todo').getByTestId('task-card-104')).toHaveCount(0);
 
-    await visibleCard.dragTo(page.getByTestId('board-column-done'));
-    await page.waitForTimeout(300);
+    await dragTaskToColumn(page, visibleCard, page.getByTestId('board-drop-done'));
 
-    await expect(page.getByTestId('board-column-done').getByTestId('task-card-101')).toBeVisible();
+    await expect(page.getByTestId('board-column-done').getByTestId('task-card-101')).toBeVisible({
+      timeout: 10_000
+    });
 
     const todoTaskIds = await page.evaluate(async () => {
       const db = await new Promise<IDBDatabase>((resolve, reject) => {

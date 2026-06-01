@@ -36,7 +36,7 @@
           v-for="column in board.orderedColumns"
           :key="column.id"
           :column="column"
-          :tasks="visibleTasksForColumn(column.id)"
+          :tasks="visibleTasksByColumnId[column.id] ?? []"
           :total-count="board.getColumnTaskCount(column.id)"
           :is-filtered-view="hasActiveFilters"
           :authors="board.authors"
@@ -66,15 +66,18 @@ const { showWarning, showError } = useAppToast();
 
 const hasActiveFilters = computed(() => hasActiveTaskFilters(filters.value));
 
-const visibleTasksForColumn = (columnId: string) => {
-  const columnTasks = board.getTasksByColumn(columnId);
+const visibleTasksByColumnId = computed(() => {
+  const byColumn: Record<string, Task[]> = {};
 
-  if (!hasActiveFilters.value) {
-    return columnTasks;
+  for (const column of board.orderedColumns) {
+    const columnTasks = board.getTasksByColumn(column.id);
+    byColumn[column.id] = hasActiveFilters.value
+      ? columnTasks.filter((task) => matchesTaskFilters(task, filters.value))
+      : columnTasks;
   }
 
-  return columnTasks.filter((task) => matchesTaskFilters(task, filters.value));
-};
+  return byColumn;
+});
 
 const handleCreateTask = async (payload: { title: string; authorId: number }) => {
   await board.createTask(payload.title, payload.authorId);

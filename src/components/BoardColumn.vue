@@ -29,12 +29,14 @@
         :group="{ name: 'kanban', pull: true, put: true }"
         item-key="id"
         class="board-column__list"
+        :data-testid="`board-drop-${column.id}`"
         filter=".no-drag"
         :prevent-on-filter="false"
         ghost-class="task-card--ghost"
         drag-class="task-card--dragging"
         :animation="220"
         @change="onListChange"
+        @add="onListChange"
       >
         <template #item="{ element }">
           <TaskCard
@@ -79,11 +81,11 @@ const theme = computed(() => getColumnTheme(props.column.id));
 const taskList = ref<Task[]>([]);
 
 watch(
-  () => props.tasks,
-  (tasks) => {
-    taskList.value = [...tasks];
+  () => props.tasks.map((task) => `${task.id}:${task.order}`).join('|'),
+  () => {
+    taskList.value = [...props.tasks];
   },
-  { immediate: true, deep: true }
+  { immediate: true }
 );
 
 const getAuthorName = (authorId: number) => {
