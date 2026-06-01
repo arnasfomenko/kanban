@@ -1,0 +1,245 @@
+{
+  "columns": [
+    {
+      "id": "todo",
+      "name": "to do",
+      "order": 1,
+      "default": true
+    },
+    {
+      "id": "in_progress",
+      "name": "in progress",
+      "order": 2
+    },
+    {
+      "id": "review",
+      "name": "review",
+      "order": 3
+    },
+    {
+      "id": "done",
+      "name": "done",
+      "order": 4
+    }
+  ],
+  "authors": [
+    {
+      "id": 1,
+      "name": "Emma Carter"
+    },
+    {
+      "id": 2,
+      "name": "Noah Bennett"
+    },
+    {
+      "id": 3,
+      "name": "Olivia Reed"
+    },
+    {
+      "id": 4,
+      "name": "Liam Brooks"
+    },
+    {
+      "id": 5,
+      "name": "Sophia Turner"
+    },
+    {
+      "id": 6,
+      "name": "Ethan Hayes"
+    },
+    {
+      "id": 7,
+      "name": "Mia Foster"
+    },
+    {
+      "id": 8,
+      "name": "James Cooper"
+    },
+    {
+      "id": 9,
+      "name": "Ava Mitchell"
+    },
+    {
+      "id": 10,
+      "name": "Lucas Ward"
+    },
+    {
+      "id": 11,
+      "name": "Grace Sullivan"
+    },
+    {
+      "id": 12,
+      "name": "Henry Collins"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 101,
+      "title": "Set up project structure",
+      "authorId": 1,
+      "status": "todo",
+      "createdAt": "2025-01-05T09:00:00Z"
+    },
+    {
+      "id": 102,
+      "title": "Implement board layout",
+      "authorId": 2,
+      "status": "in_progress",
+      "createdAt": "2025-01-06T10:30:00Z"
+    },
+    {
+      "id": 103,
+      "title": "Create reusable button component",
+      "authorId": 3,
+      "status": "review",
+      "createdAt": "2025-01-07T11:15:00Z"
+    },
+    {
+      "id": 104,
+      "title": "Persist tasks in IndexedDB",
+      "authorId": 4,
+      "status": "todo",
+      "createdAt": "2025-01-08T08:45:00Z"
+    },
+    {
+      "id": 105,
+      "title": "Add task creation form",
+      "authorId": 5,
+      "status": "in_progress",
+      "createdAt": "2025-01-09T13:20:00Z"
+    },
+    {
+      "id": 106,
+      "title": "Sync filters with URL query params",
+      "authorId": 6,
+      "status": "done",
+      "createdAt": "2025-01-10T15:10:00Z"
+    },
+    {
+      "id": 107,
+      "title": "Restore filters after refresh",
+      "authorId": 7,
+      "status": "review",
+      "createdAt": "2025-01-11T09:40:00Z"
+    },
+    {
+      "id": 108,
+      "title": "Implement title search",
+      "authorId": 8,
+      "status": "todo",
+      "createdAt": "2025-01-12T12:00:00Z"
+    },
+    {
+      "id": 109,
+      "title": "Show empty state for columns",
+      "authorId": 9,
+      "status": "done",
+      "createdAt": "2025-01-13T14:00:00Z"
+    },
+    {
+      "id": 110,
+      "title": "Define TypeScript interfaces",
+      "authorId": 10,
+      "status": "in_progress",
+      "createdAt": "2025-01-14T16:30:00Z"
+    },
+    {
+      "id": 111,
+      "title": "Load seed data from JSON file",
+      "authorId": 11,
+      "status": "done",
+      "createdAt": "2025-01-15T10:00:00Z"
+    },
+    {
+      "id": 112,
+      "title": "Prepare project README",
+      "authorId": 12,
+      "status": "review",
+      "createdAt": "2025-01-16T17:20:00Z"
+    },
+    {
+      "id": 113,
+      "title": "Add author filter dropdown",
+      "authorId": 3,
+      "status": "todo",
+      "createdAt": "2025-01-17T09:25:00Z"
+    },
+    {
+      "id": 114,
+      "title": "Handle missing IndexedDB state",
+      "authorId": 4,
+      "status": "in_progress",
+      "createdAt": "2025-01-18T11:50:00Z"
+    },
+    {
+      "id": 115,
+      "title": "Create Pinia board store",
+      "authorId": 5,
+      "status": "review",
+      "createdAt": "2025-01-19T08:10:00Z"
+    },
+    {
+      "id": 116,
+      "title": "Add form validation for new tasks",
+      "authorId": 6,
+      "status": "done",
+      "createdAt": "2025-01-20T13:35:00Z"
+    },
+    {
+      "id": 117,
+      "title": "Display task metadata",
+      "authorId": 7,
+      "status": "todo",
+      "createdAt": "2025-01-21T10:45:00Z"
+    },
+    {
+      "id": 118,
+      "title": "Refine board spacing and layout",
+      "authorId": 8,
+      "status": "in_progress",
+      "createdAt": "2025-01-22T15:05:00Z"
+    },
+    {
+      "id": 119,
+      "title": "Support moving tasks between columns",
+      "authorId": 9,
+      "status": "review",
+      "createdAt": "2025-01-23T09:30:00Z"
+    },
+    {
+      "id": 120,
+      "title": "Persist status updates locally",
+      "authorId": 10,
+      "status": "done",
+      "createdAt": "2025-01-24T12:20:00Z"
+    },
+    {
+      "id": 121,
+      "title": "Render board counts by column",
+      "authorId": 11,
+      "status": "todo",
+      "createdAt": "2025-01-25T14:10:00Z"
+    },
+    {
+      "id": 122,
+      "title": "Reset filters to default state",
+      "authorId": 12,
+      "status": "in_progress",
+      "createdAt": "2025-01-26T16:40:00Z"
+    },
+    {
+      "id": 123,
+      "title": "Keep board state after page reload",
+      "authorId": 1,
+      "status": "review",
+      "createdAt": "2025-01-27T11:05:00Z"
+    },
+    {
+      "id": 124,
+      "title": "Show selected author in filter UI",
+      "authorId": 2,
+      "status": "done",
+      "createdAt": "2025-01-28T10:55:00Z"
+    }
+  ]
+}
